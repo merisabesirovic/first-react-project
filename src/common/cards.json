@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "imageURL": "https://images.trvl-media.com/lodging/2000000/1820000/1819500/1819484/4543d276.jpg?impolicy=resizecrop&rw=1200&ra=fit",
     "name": "Glas Haus Hotel",
     "stars": 3,
@@ -9,24 +10,27 @@
     "numberOfReviews": 1000
   },
   {
+    "id": 2,
     "imageURL": "https://images.trvl-media.com/lodging/83000000/82870000/82860600/82860531/72315467.jpg?impolicy=resizecrop&rw=1200&ra=fit",
     "name": "Staycity Aparthotels Dublin City Centre",
     "stars": 5,
     "location": "City centre hotel within easy reach of Dublin Castle",
-    "rating": "9.4/10",
+    "rating": "6/10",
     "comment": "Exeptional",
     "numberOfReviews": 146
   },
   {
+    "id": 3,
     "imageURL": "https://images.trvl-media.com/lodging/36000000/35230000/35229400/35229333/3005e81d.jpg?impolicy=resizecrop&rw=1200&ra=fit",
     "name": "Marlin Hotel Stephens Green",
-    "stars": 4,
+    "stars": 4.5,
     "location": "4-star hotel with restaurant, connected to a shopping centre, near Gaiety Theatre",
     "rating": "8.6/10 ",
     "comment": "Fabulous",
     "numberOfReviews": 919
   },
   {
+    "id": 4,
     "imageURL": "https://images.trvl-media.com/lodging/1000000/110000/108300/108213/60616b13.jpg?impolicy=resizecrop&rw=1200&ra=fit",
     "name": "Academy Plaza Hotel",
     "stars": 3,
@@ -36,6 +40,7 @@
     "numberOfReviews": 1000
   },
   {
+    "id": 5,
     "imageURL": "https://images.trvl-media.com/lodging/3000000/2260000/2253400/2253316/732c3743.jpg?impolicy=resizecrop&rw=1200&ra=fit",
     "name": "Claregalway Hotel",
     "stars": 4,
@@ -45,6 +50,7 @@
     "numberOfReviews": 772
   },
   {
+    "id": 6,
     "imageURL": "https://images.trvl-media.com/lodging/1000000/30000/22000/21984/27eff255.jpg?impolicy=resizecrop&rw=1200&ra=fit",
     "name": "Jurys Inn Galway",
     "stars": 4,
@@ -54,6 +60,7 @@
     "numberOfReviews": 1001
   },
   {
+    "id": 7,
     "imageURL": "https://images.trvl-media.com/lodging/3000000/2370000/2360400/2360371/f63bdafe.jpg?impolicy=resizecrop&rw=1200&ra=fit",
     "name": "Eyre Square Hotel",
     "stars": 3,
@@ -63,6 +70,7 @@
     "numberOfReviews": 999
   },
   {
+    "id": 8,
     "imageURL": "https://images.trvl-media.com/lodging/1000000/670000/660800/660779/c17550f4.jpg?impolicy=resizecrop&rw=1200&ra=fit",
     "name": "The Galmont",
     "stars": 4,
@@ -72,6 +80,7 @@
     "numberOfReviews": 1000
   },
   {
+    "id": 9,
     "imageURL": "https://images.trvl-media.com/lodging/2000000/1670000/1660400/1660347/e4957285.jpg?impolicy=resizecrop&rw=1200&ra=fit",
     "name": "Cork International Hotel",
     "stars": 4,
@@ -81,6 +90,7 @@
     "numberOfReviews": 996
   },
   {
+    "id": 10,
     "imageURL": "https://images.trvl-media.com/lodging/1000000/20000/13700/13650/4652434b.jpg?impolicy=resizecrop&rw=1200&ra=fit",
     "name": "The River Lee Hotel",
     "stars": 4,

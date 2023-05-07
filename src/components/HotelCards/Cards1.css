@@ -28,11 +28,13 @@
   justify-content: space-between;
   height: 100%;
   padding: 10px;
+  color: black;
 }
 
 .card-text p {
   margin: 0;
   padding: 0;
+  color: black;
 }
 
 .card-text p:last-child {

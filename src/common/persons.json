@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "imageURL": "https://avatars.githubusercontent.com/u/89378479?v=4",
+    "fullName": "Dzenan Košuta",
+    "description": "Dzenan is a rising Web developer...",
+    "location": "Novi Pazar, Serbia",
+    "goToRepositories": "https://github.com/dzenankosuta?tab=repositories"
+  },
+  {
+    "id": 2,
+    "imageURL": "https://avatars.githubusercontent.com/u/111905617?v=4",
+    "fullName": "Dzenan Mecinović",
+    "description": "Dzenan is a rising Web developer.",
+    "location": "Novi Pazar, Serbia",
+    "goToRepositories": "https://github.com/dzenanmecinovic?tab=repositories"
+  },
+  {
+    "id": 3,
+    "imageURL": "https://www.borisradivojkov.com/assets/images/profesionalni-poslovni-portret-rukovodioca-600x600.jpg",
+    "fullName": "Aladin Zečić",
+    "description": "Aladin is a rising Web developer...",
+    "location": "Novi Pazar, Serbia",
+    "goToRepositories": "https://github.com/aladinzecic?tab=repositories"
+  },
+  {
+    "id": 4,
+    "imageURL": "https://avatars.githubusercontent.com/u/111905979?v=4",
+    "fullName": "Haris Muslić",
+    "description": "Haris is a rising Web developer...",
+    "location": "Novi Pazar, Serbia",
+    "goToRepositories": "https://github.com/harismuslic04?tab=repositories"
+  },
+  {
+    "id": 5,
+    "imageURL": "https://avatars.githubusercontent.com/u/112485240?v=4",
+    "fullName": "Merisa Besirovic",
+    "description": "Merisa is a rising Web developer...",
+    "location": "Novi Pazar, Serbia",
+    "goToRepositories": "https://github.com/harismuslic04?tab=repositories"
+  },
+  {
+    "id": 6,
+    "imageURL": "https://avatars.githubusercontent.com/u/115462133?v=4",
+    "fullName": "Hatidza Mahmutovic",
+    "description": "Hatidza is a rising Web developer...",
+    "location": "Novi Pazar, Serbia",
+    "goToRepositories": "https://github.com/harismuslic04?tab=repositories"
+  },
+  {
+    "id": 7,
+    "imageURL": "https://avatars.githubusercontent.com/u/111905339?v=4",
+    "fullName": "Bakir Ujkanovic",
+    "description": "Bakir is a rising Web developer...",
+    "location": "Novi Pazar, Serbia",
+    "goToRepositories": "https://github.com/harismuslic04?tab=repositories"
+  },
+  {
+    "id": 8,
+    "imageURL": "https://avatars.githubusercontent.com/u/111905831?v=4",
+    "fullName": "Alen Muslic",
+    "description": "Alen is a rising Web developer...",
+    "location": "Novi Pazar, Serbia",
+    "goToRepositories": "https://github.com/harismuslic04?tab=repositories"
+  }
+]

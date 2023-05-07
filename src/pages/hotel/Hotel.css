@@ -1,0 +1,15 @@
+.hotel-one {
+  display: flex;
+  justify-content: center;
+  background-color: beige;
+}
+.hotel-card-wrapper {
+  margin-top: 80px;
+}
+.hoteldesc {
+  font-weight: bold;
+  font-size: 15px;
+}
+* {
+  text-decoration: none;
+}

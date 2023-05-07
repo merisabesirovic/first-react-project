@@ -1,0 +1,11 @@
+.hotels-container {
+  box-sizing: border-box;
+  margin-top: 30px;
+  padding: 0px;
+  display: grid;
+  grid-template-columns: repeat(3, 250px);
+  justify-content: center;
+  grid-auto-rows: minmax(420px, auto);
+  grid-gap: 100px;
+  margin-top: 80px;
+}

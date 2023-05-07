@@ -1,0 +1,13 @@
+.quote-container {
+  margin-top: 80px;
+  margin-left: 40px;
+  overflow-x: hidden;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  grid-gap: 20px;
+}
+body {
+  overflow-x: hidden;
+}
