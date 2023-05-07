@@ -8,14 +8,7 @@
 // // import Form from "./components/Form/Form";
 // // import TeamCard from "./components/TeamCards/TeamCard";
 // // import teams from "./common/teams.json";
-// // const poruke = [
-// //   "Danas je subota",
-// //   "U subotu je lepo vreme",
-// //   "Subota je dan za odmor",
-// //   "Subota je dan za kupovinu",
-// //   "Subota je dan za druzenje",
-// //   "Subota je dan za kafu",
-// // ];
+// //
 // export const BASE_URL = "https://api.quotable.io";
 // function App() {
 //   // const [arr, setArr] = useState(poruke);
@@ -115,15 +108,50 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar1/Navbar1";
-import QuoteCard from "./components/Quotes/QuoteCard";
-import Pagination from "./components/Pagination/Pagination";
+// import PersonCard from "./components/PersonCard/PersonCard";
+// import persons from "./common/persons.json";
+// import HotelCards from "./components/HotelCards/Cards1";
+// import hotels from "./common/cards.json";
+// import QuoteCard from "./components/Quotes/QuoteCard";
+// import Pagination from "./components/Pagination/Pagination";
+import Form from "./components/Form/Form";
+// import TeamCard from "./components/TeamCards/TeamCard";
+import teams from "./common/teams.json";
+import { Routes, Route } from "react-router-dom";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import Hotels from "./pages/Hotels/Hotels";
+import Teams from "./pages/Teams/Teams";
+import Quotes from "./pages/Quotes/Quotes";
+import Hotel from "./pages/hotel/Hotel";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
 export const BASE_URL = "https://api.quotable.io";
 
+const poruke = [
+  "Danas je subota",
+  "U subotu je lepo vreme",
+  "Subota je dan za odmor",
+  "Subota je dan za kupovinu",
+  "Subota je dan za druzenje",
+  "Subota je dan za kafu",
+];
 function App() {
+  const [arr, setArr] = useState(poruke);
+  const reverseArr = () => {
+    const _arr = [...arr];
+    const reversed = _arr.reverse();
+    setArr(reversed);
+  };
   const [quotes, setQuotes] = useState([]);
   const [page, setPage] = useState(1);
   const handlePageClick = (pageNumber) => {
     setPage(pageNumber);
+  };
+  const [teams1, setTeams] = useState(teams);
+  console.log(teams1);
+  const deleteTeam = (id) => {
+    const filteredTeams = teams.filter((team) => team.id !== id);
+    setTeams(filteredTeams);
   };
 
   useEffect(() => {
@@ -137,19 +165,144 @@ function App() {
     getQuotes();
   }, [page]);
 
+  // return (
+  //   <BrowserRouter>
+  //     <div style={{ overflowX: "hidden" }} className="App">
+  //       <Navbar />
+  //       <Routes>
+  //         <Route index element={<Form />} />
+  //         <Route
+  //           path="/about-us"
+  //           element={
+  //             <div
+  //               style={{
+  //                 display: "grid",
+  //                 gridTemplateColumns: "repeat(4, 250px)",
+  //                 justifyContent: "center",
+  //                 gridAutoRows: "minmax(420px, auto)",
+  //                 gridGap: "40px",
+  //               }}
+  //             >
+  //               {persons.map((person) => (
+  //                 <PersonCard
+  //                   key={person.id}
+  //                   imageURL={person.imageURL}
+  //                   fullName={person.fullName}
+  //                   location={person.location}
+  //                   description={person.description}
+  //                   goToRepositories={person.goToRepositories}
+  //                 />
+  //               ))}
+  //             </div>
+  //           }
+  //         />
+  //         <Route
+  //           path="/quotes"
+  //           element={
+  //             <div>
+  //               <div className="container">
+  //                 {quotes.map((quote) => (
+  //                   <div className="card" key={quote._id}>
+  //                     <h2>{quote.author}</h2>
+  //                     <p>{quote.content}</p>
+  //                   </div>
+  //                 ))}
+  //               </div>
+  //               <Pagination
+  //                 currentPage={page}
+  //                 handlePageClick={handlePageClick}
+  //               />
+  //             </div>
+  //           }
+  //         />
+  //         <Route
+  //           path="/booking"
+  //           element={
+  //             <div
+  //               style={{
+  //                 boxSizing: "border-box",
+  //                 marginTop: "30px",
+  //                 padding: "0px",
+  //                 display: "grid",
+  //                 gridTemplateColumns: "repeat(3, 250px)",
+  //                 justifyContent: "center",
+  //                 gridAutoRows: "minmax(420px, auto)",
+  //                 gridGap: "100px",
+  //               }}
+  //             >
+  //               {hotels.map((hotel) => (
+  //                 <HotelCards
+  //                   key={hotel.id}
+  //                   imageURL={hotel.imageURL}
+  //                   name={hotel.name}
+  //                   stars={hotel.stars}
+  //                   location={hotel.location}
+  //                   rating={hotel.rating}
+  //                   comments={hotel.comments}
+  //                   numberOfReviews={hotel.numberOfReviews}
+  //                 />
+  //               ))}
+  //             </div>
+  //           }
+  //         />
+  //         <Route
+  //           path="/poruka"
+  //           element={
+  //             <div>
+  //               <div
+  //                 style={{
+  //                   height: "200px",
+  //                   display: "flex",
+  //                   flexDirection: "column",
+  //                   justifyContent: "center",
+  //                   alignItems: "center",
+  //                   gap: "10px",
+  //                 }}
+  //               ></div>
+  //               <button
+  //                 onClick={() => {
+  //                   reverseArr();
+  //                   console.log("okrenuo se niz");
+  //                 }}
+  //               >
+  //                 Promeni raspored poruka
+  //               </button>
+  //               {arr.map((poruka) => (
+  //                 <p>{poruka}</p>
+  //               ))}
+  //             </div>
+  //           }
+  //         />
+  //         {/* <Route
+  //         path="/league"
+  //         element={
+  //     //   {teams.map((teamCard) => (
+  //     //     <TeamCard
+  //     //       key={teamCard.id}
+  //     //       name={teamCard.name}
+  //     //       matches={teamCard.matches}
+  //     //       points={teamCard.points}
+  //     //       deleteTeam={() => deleteTeam(teamCard.id)}
+  //     //     />
+  //     //   ))}}/>; */}
+  //       </Routes>
+  //     </div>
+  //   </BrowserRouter>
+  // );
   return (
-    <div style={{ overflowX: "hidden" }} className="App">
+    <>
       <Navbar />
-      <div className="container">
-        {quotes.map((quote) => (
-          <div className="card" key={quote._id}>
-            <h2>{quote.author}</h2>
-            <p>{quote.content}</p>
-          </div>
-        ))}
-      </div>
-      <Pagination currentPage={page} handlePageClick={handlePageClick} />
-    </div>
+      <Routes>
+        <Route path="/" element={<Form />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/hotels" element={<Hotels />} />
+        <Route path="/teams" element={<Teams />} />
+        <Route path="/quotes" element={<Quotes />} />
+        <Route path="/hotels/:id" element={<Hotel />} />
+      </Routes>
+    </>
   );
 }
 
