@@ -1,22 +1,36 @@
 import { useState } from "react";
 import "./Login.css";
 import { BASE_URL } from "../../config/api";
-import { useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import axios from "axios";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
   async function loginUser(data) {
     try {
       const user = await axios.post(`${BASE_URL}/users/login`, data);
       const userInfo = await user.data;
       console.log(userInfo);
+      navigate("/");
+      localStorage.setItem("token", userInfo.token);
+      setIsLoggedIn(true);
+      console.log("Navigated to home page");
     } catch (err) {
       console.log(err.response.data.err);
       setError(err.response.data.err);
+      localStorage.removeItem("token");
+      setIsLoggedIn(false);
     }
   }
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
   function handleClick(e) {
     e.preventDefault();
     loginUser({
@@ -56,6 +70,9 @@ export default function Login() {
         <button id="login" onClick={handleClick}>
           Login
         </button>
+        <p>
+          Nemate nalog? <a href="/register">Registrujte se ovde</a>
+        </p>
         <p style={{ fontSize: "2rem", color: "black" }}> {email}</p>
         {error && <p style={{ color: "red", fontSize: "1rem" }}>{error}</p>}
       </form>

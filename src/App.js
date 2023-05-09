@@ -115,6 +115,7 @@ import Navbar from "./components/Navbar1/Navbar1";
 // import QuoteCard from "./components/Quotes/QuoteCard";
 // import Pagination from "./components/Pagination/Pagination";
 import Form from "./components/Form/Form";
+import { useRoutes, Navigate } from "react-router-dom";
 // import TeamCard from "./components/TeamCards/TeamCard";
 import teams from "./common/teams.json";
 import { Routes, Route } from "react-router-dom";
@@ -126,7 +127,7 @@ import Hotel from "./pages/hotel/Hotel";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 export const BASE_URL = "https://api.quotable.io";
-
+// localStorage.clear();
 const poruke = [
   "Danas je subota",
   "U subotu je lepo vreme",
@@ -289,18 +290,27 @@ function App() {
   //     </div>
   //   </BrowserRouter>
   // );
+
+  const itemSet = localStorage.getItem("token") !== null;
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Form />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/hotels" element={<Hotels />} />
-        <Route path="/teams" element={<Teams />} />
-        <Route path="/quotes" element={<Quotes />} />
-        <Route path="/hotels/:id" element={<Hotel />} />
+        {itemSet ? (
+          <>
+            <Route path="/" element={<Form />} exact />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/hotels" element={<Hotels />} />
+            <Route path="/teams" element={<Teams />} />
+            <Route path="/quotes" element={<Quotes />} />
+            <Route path="/hotels/:id" element={<Hotel />} />
+          </>
+        ) : (
+          <>
+            <Route path="/register" element={<Register />} exact />
+            <Route path="/login" element={<Login />} />
+          </>
+        )}
       </Routes>
     </>
   );
