@@ -1,36 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./Login.css";
 import { BASE_URL } from "../../config/api";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import axios from "axios";
+import { AppContext } from "../../context/AppContext";
 export default function Login() {
+  const navigate = useNavigate();
+  const { setToken } = useContext(AppContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
+  console.log(useContext(AppContext).token);
   async function loginUser(data) {
     try {
       const user = await axios.post(`${BASE_URL}/users/login`, data);
-      const userInfo = await user.data;
-      console.log(userInfo);
-      navigate("/");
-      localStorage.setItem("token", userInfo.token);
-      setIsLoggedIn(true);
-      console.log("Navigated to home page");
+      if (user && user.data) {
+        const userInfo = await user.data;
+        console.log(userInfo);
+        navigate("/");
+        setIsLoggedIn(true);
+        setToken(userInfo.token);
+      }
     } catch (err) {
       console.log(err.response.data.err);
       setError(err.response.data.err);
       localStorage.removeItem("token");
       setIsLoggedIn(false);
+      setToken(null);
     }
   }
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/");
-    }
-  }, [isLoggedIn, navigate]);
   function handleClick(e) {
     e.preventDefault();
     loginUser({
@@ -73,7 +72,7 @@ export default function Login() {
         <p>
           Nemate nalog? <a href="/register">Registrujte se ovde</a>
         </p>
-        <p style={{ fontSize: "2rem", color: "black" }}> {email}</p>
+        {/* <p style={{ fontSize: "2rem", color: "black" }}> {email}</p> */}
         {error && <p style={{ color: "red", fontSize: "1rem" }}>{error}</p>}
       </form>
     </div>

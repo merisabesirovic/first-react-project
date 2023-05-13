@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import HotelCard from "../../components/HotelCards/Cards1";
 import hotels from "../../common/cards.json";
 import Kartica from "../../pages/hotel/Kartica";
 import "./Hotel.css";

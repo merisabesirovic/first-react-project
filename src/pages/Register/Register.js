@@ -40,68 +40,65 @@ export default function Register() {
 
   return (
     <div className="rCointener">
-      {isSuccess ? (
-        <h2 style={{ textAlign: "center", color: colorMessage }}>
+      <h2 style={{ textAlign: "center", color: colorMessage }}>
+        {message && message}
+      </h2>
+      <form>
+        <h1>Register</h1>
+        <p style={{ textAlign: "center", color: colorMessage }}>
           {message && message}
-        </h2>
-      ) : (
-        <form>
-          <h1>Register</h1>
-          <p style={{ textAlign: "center", color: colorMessage }}>
-            {message && message}
-          </p>
-          {/* {message ? <p>{message}</p> : <></>} */}
-          <label>Name</label>
-          <input
-            className="rInput"
-            type="text"
-            placeholder="Name"
-            name="name"
-            value={userInput.name}
-            onChange={(e) =>
-              setUserInput((prev) => ({
-                ...prev,
-                name: e.target.value,
-              }))
-            }
-            required
-          ></input>
-          <label>Email</label>
-          <input
-            type="email"
-            className="rInput"
-            value={userInput.email}
-            onChange={(e) =>
-              setUserInput((prev) => ({
-                ...prev,
-                email: e.target.value,
-              }))
-            }
-            placeholder="Enter Email"
-            name="email"
-            required
-          ></input>
-          <label>Password</label>
-          <input
-            placeholder="Enter Password"
-            className="rInput"
-            type="password"
-            name="password"
-            value={userInput.password}
-            onChange={(e) =>
-              setUserInput((prev) => ({
-                ...prev,
-                password: e.target.value,
-              }))
-            }
-            required
-          ></input>
-          <button onClick={handleClick}>Register</button>
-          <p>
-            Vec imate nalog? <a href="/login">Ulogujte se ovde</a>
-          </p>
-        </form>
-      )}
+        </p>
+        {/* {message ? <p>{message}</p> : <></>} */}
+        <label>Name</label>
+        <input
+          className="rInput"
+          type="text"
+          placeholder="Name"
+          name="name"
+          value={userInput.name}
+          onChange={(e) =>
+            setUserInput((prev) => ({
+              ...prev,
+              name: e.target.value,
+            }))
+          }
+          required
+        ></input>
+        <label>Email</label>
+        <input
+          type="email"
+          className="rInput"
+          value={userInput.email}
+          onChange={(e) =>
+            setUserInput((prev) => ({
+              ...prev,
+              email: e.target.value,
+            }))
+          }
+          placeholder="Enter Email"
+          name="email"
+          required
+        ></input>
+        <label>Password</label>
+        <input
+          placeholder="Enter Password"
+          className="rInput"
+          type="password"
+          name="password"
+          value={userInput.password}
+          onChange={(e) =>
+            setUserInput((prev) => ({
+              ...prev,
+              password: e.target.value,
+            }))
+          }
+          required
+        ></input>
+        <button onClick={handleClick}>Register</button>
+        <p>
+          Vec imate nalog? <a href="/login">Ulogujte se ovde</a>
+        </p>
+      </form>
     </div>
   );
 }

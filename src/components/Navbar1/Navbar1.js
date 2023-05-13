@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "../../pages/Login/Login";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
+import { useContext } from "react";
 
 function Navbar(props) {
   const isLoggedIn = localStorage.getItem("token") !== null;
+  const { token, setToken } = useContext(AppContext);
   const acitveStyles = {
     backgroundColor: "#252525",
     color: "#fff",
@@ -15,9 +18,10 @@ function Navbar(props) {
     textDecoration: "none",
     color: "black",
   };
+  useEffect(() => {}, [token]);
   return (
     <header className="header">
-      {!isLoggedIn && (
+      {!isLoggedIn ? (
         <>
           <NavLink
             to={"/login"}
@@ -34,8 +38,7 @@ function Navbar(props) {
             <h2 style={{ fontFamily: "Arial" }}>Register</h2>
           </NavLink>
         </>
-      )}
-      {isLoggedIn && (
+      ) : (
         <>
           <NavLink
             to={"/"}

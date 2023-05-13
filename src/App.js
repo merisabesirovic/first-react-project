@@ -105,7 +105,7 @@
 
 // export default App;
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar1/Navbar1";
 // import PersonCard from "./components/PersonCard/PersonCard";
@@ -115,7 +115,6 @@ import Navbar from "./components/Navbar1/Navbar1";
 // import QuoteCard from "./components/Quotes/QuoteCard";
 // import Pagination from "./components/Pagination/Pagination";
 import Form from "./components/Form/Form";
-import { useRoutes, Navigate } from "react-router-dom";
 // import TeamCard from "./components/TeamCards/TeamCard";
 import teams from "./common/teams.json";
 import { Routes, Route } from "react-router-dom";
@@ -126,6 +125,9 @@ import Quotes from "./pages/Quotes/Quotes";
 import Hotel from "./pages/hotel/Hotel";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import { useContext, useState } from "react";
+import { AppContext } from "../src/context/AppContext";
 export const BASE_URL = "https://api.quotable.io";
 // localStorage.clear();
 const poruke = [
@@ -291,26 +293,63 @@ function App() {
   //   </BrowserRouter>
   // );
 
-  const itemSet = localStorage.getItem("token") !== null;
+  const { token, setToken } = useContext(AppContext);
+  useEffect(() => {
+    const localToken = localStorage.getItem("token");
+    setToken(localToken);
+  }, []);
   return (
     <>
       <Navbar />
       <Routes>
-        {itemSet ? (
-          <>
-            <Route path="/" element={<Form />} exact />
-            <Route path="/aboutus" element={<AboutUs />} />
-            <Route path="/hotels" element={<Hotels />} />
-            <Route path="/teams" element={<Teams />} />
-            <Route path="/quotes" element={<Quotes />} />
-            <Route path="/hotels/:id" element={<Hotel />} />
-          </>
-        ) : (
-          <>
-            <Route path="/register" element={<Register />} exact />
-            <Route path="/login" element={<Login />} />
-          </>
-        )}
+        <Route
+          path="/aboutus"
+          element={
+            <ProtectedRoute>
+              <AboutUs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/hotels"
+          element={
+            <ProtectedRoute>
+              <Hotels />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teams"
+          element={
+            <ProtectedRoute>
+              <Teams />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quotes"
+          element={
+            <ProtectedRoute>
+              <Quotes />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/hotels/:id"
+          element={
+            <ProtectedRoute>
+              <Hotel />
+            </ProtectedRoute>
+          }
+        />
+        {/* <Route path="/" element={<Form />} exact />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/hotels" element={<Hotels />} />
+        <Route path="/teams" element={<Teams />} />
+        <Route path="/quotes" element={<Quotes />} /> */}
+        {/* <Route path="/hotels/:id" element={<Hotel />} /> */}
+        <Route path="/register" element={<Register />} exact />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );
