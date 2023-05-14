@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import Login from "../../pages/Login/Login";
 import "./NavBar.css";
-import { NavLink } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Navbar(props) {
-  const isLoggedIn = localStorage.getItem("token") !== null;
   const { token, setToken } = useContext(AppContext);
+  const navigation = useNavigate();
   const acitveStyles = {
     backgroundColor: "#252525",
     color: "#fff",
@@ -21,7 +21,7 @@ function Navbar(props) {
   useEffect(() => {}, [token]);
   return (
     <header className="header">
-      {!isLoggedIn ? (
+      {!token ? (
         <>
           <NavLink
             to={"/login"}
@@ -41,7 +41,7 @@ function Navbar(props) {
       ) : (
         <>
           <NavLink
-            to={"/"}
+            to={"/users"}
             style={({ isActive }) => (isActive ? acitveStyles : styles)}
             tabIndex={1}
           >
@@ -71,6 +71,17 @@ function Navbar(props) {
           >
             <h2 style={{ fontFamily: "Arial" }}>Quotes</h2>
           </NavLink>
+          <button
+            className="activeStyles"
+            style={{ width: "100px", borderRadius: "50px" }}
+            onClick={() => {
+              localStorage.removeItem("token");
+              setToken(null);
+              navigation("/login");
+            }}
+          >
+            Logout
+          </button>
         </>
       )}
     </header>

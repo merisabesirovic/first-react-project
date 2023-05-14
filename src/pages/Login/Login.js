@@ -1,35 +1,31 @@
 import { useContext, useState } from "react";
 import "./Login.css";
+import axios from "axios";
 import { BASE_URL } from "../../config/api";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { AppContext } from "../../context/AppContext";
 export default function Login() {
-  const navigate = useNavigate();
+  const navigation = useNavigate();
   const { setToken } = useContext(AppContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
-  console.log(useContext(AppContext).token);
+
   async function loginUser(data) {
     try {
       const user = await axios.post(`${BASE_URL}/users/login`, data);
-      if (user && user.data) {
-        const userInfo = await user.data;
-        console.log(userInfo);
-        navigate("/");
-        setIsLoggedIn(true);
-        setToken(userInfo.token);
-      }
+      const userInfo = await user.data;
+      console.log(userInfo);
+      // console.log(userInfo.token);
+      localStorage.setItem("token", userInfo.token);
+      setToken(userInfo.token);
+      navigation("/");
     } catch (err) {
       console.log(err.response.data.err);
-      setError(err.response.data.err);
       localStorage.removeItem("token");
-      setIsLoggedIn(false);
       setToken(null);
+      setError(err.response.data.err);
     }
   }
+
   function handleClick(e) {
     e.preventDefault();
     loginUser({
@@ -37,6 +33,12 @@ export default function Login() {
       password,
     });
   }
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  //   const [userInput, setUserInput] = useState({
+  //     email: "",
+  //     password:""
+  //   })
 
   return (
     <div className="cointener">
@@ -50,7 +52,7 @@ export default function Login() {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-          placeholder="email"
+          placeholder="Email"
           name="email"
           required
         ></input>
@@ -59,21 +61,20 @@ export default function Login() {
           className="input"
           type="password"
           name="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
-          placeholder="Password"
           required
         ></input>
         <button id="login" onClick={handleClick}>
           Login
         </button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <p>
-          Nemate nalog? <a href="/register">Registrujte se ovde</a>
+          Nemate nalog? Registrujte se <a href="/register">ovde</a>
         </p>
-        {/* <p style={{ fontSize: "2rem", color: "black" }}> {email}</p> */}
-        {error && <p style={{ color: "red", fontSize: "1rem" }}>{error}</p>}
       </form>
     </div>
   );

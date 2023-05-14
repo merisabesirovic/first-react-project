@@ -114,10 +114,10 @@ import Navbar from "./components/Navbar1/Navbar1";
 // import hotels from "./common/cards.json";
 // import QuoteCard from "./components/Quotes/QuoteCard";
 // import Pagination from "./components/Pagination/Pagination";
-import Form from "./components/Form/Form";
 // import TeamCard from "./components/TeamCards/TeamCard";
 import teams from "./common/teams.json";
 import { Routes, Route } from "react-router-dom";
+import Users from "./components/Users/Users";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Hotels from "./pages/Hotels/Hotels";
 import Teams from "./pages/Teams/Teams";
@@ -125,6 +125,7 @@ import Quotes from "./pages/Quotes/Quotes";
 import Hotel from "./pages/hotel/Hotel";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
+import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { useContext, useState } from "react";
 import { AppContext } from "../src/context/AppContext";
@@ -297,61 +298,62 @@ function App() {
   useEffect(() => {
     const localToken = localStorage.getItem("token");
     setToken(localToken);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <Navbar />
-      <Routes>
-        <Route
-          path="/aboutus"
-          element={
-            <ProtectedRoute>
-              <AboutUs />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/hotels"
-          element={
-            <ProtectedRoute>
-              <Hotels />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/teams"
-          element={
-            <ProtectedRoute>
-              <Teams />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/quotes"
-          element={
-            <ProtectedRoute>
-              <Quotes />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/hotels/:id"
-          element={
-            <ProtectedRoute>
-              <Hotel />
-            </ProtectedRoute>
-          }
-        />
-        {/* <Route path="/" element={<Form />} exact />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/hotels" element={<Hotels />} />
-        <Route path="/teams" element={<Teams />} />
-        <Route path="/quotes" element={<Quotes />} /> */}
-        {/* <Route path="/hotels/:id" element={<Hotel />} /> */}
-        <Route path="/register" element={<Register />} exact />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </>
+      <main style={{ minHeight: "90vh" }}>
+        <Routes>
+          <Route path="/users" element={<Users />} />
+          {/* <Route path="/" element={token ? <Users /> : <Login />} /> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/aboutus"
+            element={
+              <ProtectedRoute>
+                <AboutUs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/hotels"
+            element={
+              <ProtectedRoute>
+                <Hotels />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/teams"
+            element={
+              <ProtectedRoute>
+                <Teams />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/quotes"
+            element={
+              <ProtectedRoute>
+                <Quotes />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/hotels/:id"
+            element={
+              <ProtectedRoute>
+                <Hotel />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<p>Nepostojeca stranica</p>} />
+        </Routes>
+      </main>
+      <Footer style={{ justifySelf: "end" }} />
+    </div>
   );
 }
 

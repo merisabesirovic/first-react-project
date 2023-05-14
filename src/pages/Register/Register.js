@@ -8,6 +8,9 @@ export default function Register() {
     name: "",
     email: "",
     password: "",
+    residency: "",
+    imageUrl: "",
+    github: "",
   });
   const [message, setMessage] = useState("");
   const [incorrectStyles, setIncorrectStyles] = useState(false);
@@ -25,6 +28,9 @@ export default function Register() {
         name: "",
         email: "",
         password: "",
+        residency: "",
+        imageUrl: "",
+        github: "",
       });
     } catch (err) {
       console.log(err.response.data.err);
@@ -40,65 +46,111 @@ export default function Register() {
 
   return (
     <div className="rCointener">
-      <h2 style={{ textAlign: "center", color: colorMessage }}>
-        {message && message}
-      </h2>
-      <form>
-        <h1>Register</h1>
-        <p style={{ textAlign: "center", color: colorMessage }}>
+      {isSuccess ? (
+        <h2 style={{ textAlign: "center", color: colorMessage }}>
           {message && message}
-        </p>
-        {/* {message ? <p>{message}</p> : <></>} */}
-        <label>Name</label>
-        <input
-          className="rInput"
-          type="text"
-          placeholder="Name"
-          name="name"
-          value={userInput.name}
-          onChange={(e) =>
-            setUserInput((prev) => ({
-              ...prev,
-              name: e.target.value,
-            }))
-          }
-          required
-        ></input>
-        <label>Email</label>
-        <input
-          type="email"
-          className="rInput"
-          value={userInput.email}
-          onChange={(e) =>
-            setUserInput((prev) => ({
-              ...prev,
-              email: e.target.value,
-            }))
-          }
-          placeholder="Enter Email"
-          name="email"
-          required
-        ></input>
-        <label>Password</label>
-        <input
-          placeholder="Enter Password"
-          className="rInput"
-          type="password"
-          name="password"
-          value={userInput.password}
-          onChange={(e) =>
-            setUserInput((prev) => ({
-              ...prev,
-              password: e.target.value,
-            }))
-          }
-          required
-        ></input>
-        <button onClick={handleClick}>Register</button>
-        <p>
-          Vec imate nalog? <a href="/login">Ulogujte se ovde</a>
-        </p>
-      </form>
+        </h2>
+      ) : (
+        <form>
+          <h1>Register</h1>
+          <p style={{ textAlign: "center", color: colorMessage }}>
+            {message && message}
+          </p>
+          {/* {message ? <p>{message}</p> : <></>} */}
+          <label>Name</label>
+          <input
+            className="rInput"
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={userInput.name}
+            onChange={(e) =>
+              setUserInput((prev) => ({
+                ...prev,
+                name: e.target.value,
+              }))
+            }
+            required
+          ></input>
+          <label>Email</label>
+          <input
+            type="email"
+            className="rInput"
+            value={userInput.email}
+            onChange={(e) =>
+              setUserInput((prev) => ({
+                ...prev,
+                email: e.target.value,
+              }))
+            }
+            placeholder="Enter Email"
+            name="email"
+            required
+          ></input>
+          <label>Password</label>
+          <input
+            placeholder="Enter Password"
+            className="rInput"
+            type="password"
+            name="password"
+            value={userInput.password}
+            onChange={(e) =>
+              setUserInput((prev) => ({
+                ...prev,
+                password: e.target.value,
+              }))
+            }
+            required
+          ></input>
+          <label>Residency</label>
+          <input
+            type="text"
+            className="rInput"
+            value={userInput.residency}
+            onChange={(e) =>
+              setUserInput((prev) => ({
+                ...prev,
+                residency: e.target.value,
+              }))
+            }
+            placeholder="Enter Residence"
+            name="text"
+          ></input>
+          <label>Image</label>
+          <input
+            type="text"
+            className="rInput"
+            value={userInput.imageUrl}
+            onChange={(e) =>
+              setUserInput((prev) => ({
+                ...prev,
+                imageUrl: e.target.value,
+              }))
+            }
+            placeholder="Paste imageURL"
+            name="text"
+          ></input>
+          <label>Github</label>
+          <input
+            type="text"
+            className="rInput"
+            value={userInput.github}
+            onChange={(e) =>
+              setUserInput((prev) => ({
+                ...prev,
+                github: e.target.value,
+              }))
+            }
+            placeholder="Paste github URL"
+            name="text"
+          ></input>
+          <button onClick={handleClick}>Register</button>
+          <p>
+            Vec imate nalog? <a href="/login">Ulogujte se ovde</a>
+          </p>
+        </form>
+      )}
+      ;
     </div>
   );
 }
