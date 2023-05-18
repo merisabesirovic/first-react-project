@@ -1,0 +1,41 @@
+.useri {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  margin: 10px;
+  justify-content: center;
+}
+
+.userContainer {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.userContainer img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.userContainer h4 {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.userContainer p {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.userContainer a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.userContainer a:hover {
+  text-decoration: underline;
+}

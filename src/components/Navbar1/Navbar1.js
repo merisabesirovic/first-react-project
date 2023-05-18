@@ -41,7 +41,7 @@ function Navbar(props) {
       ) : (
         <>
           <NavLink
-            to={"/users"}
+            to={"/"}
             style={({ isActive }) => (isActive ? acitveStyles : styles)}
             tabIndex={1}
           >

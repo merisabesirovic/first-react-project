@@ -126,6 +126,7 @@ import Hotel from "./pages/hotel/Hotel";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Footer from "./components/Footer/Footer";
+import UserDetails from "./pages/user/UserDetails";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { useContext, useState } from "react";
 import { AppContext } from "../src/context/AppContext";
@@ -305,8 +306,8 @@ function App() {
       <Navbar />
       <main style={{ minHeight: "90vh" }}>
         <Routes>
-          <Route path="/users" element={<Users />} />
-          {/* <Route path="/" element={token ? <Users /> : <Login />} /> */}
+          <Route path="/" element={token ? <Users /> : <Login />} />
+          <Route path="/users/:id" element={UserDetails} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
